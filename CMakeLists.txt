@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(vote LANGUAGES CXX)
+project(vote LANGUAGES C CXX)
 
 include(FetchContent)
 
