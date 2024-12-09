@@ -71,4 +71,10 @@ cmake --preset=default ..
 cmake --build .
 ```
 
+## Contributors
 
+<a href="https://github.com/dingdinglz/vote/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=dingdinglz/vote" />
+</a>
+
+Contributor Image Made with [contrib.rocks](https://contrib.rocks).
