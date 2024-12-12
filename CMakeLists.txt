@@ -16,5 +16,5 @@ add_compile_options(/utf-8)
 endif()
 
 add_executable(vote)
-target_sources(vote PRIVATE tool/yyjson.c tool/json.cpp main.cpp)
+target_sources(vote PRIVATE tool/yyjson.c tool/json.cpp student_database.cpp main.cpp)
 target_link_libraries(vote PRIVATE webview::core sqlite_orm::sqlite_orm)
