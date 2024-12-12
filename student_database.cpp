@@ -7,7 +7,8 @@ auto OpenDB(std::string className)
     auto Db = make_storage(className + ".db",
         make_table("students",
             make_column("id", &Student::id, primary_key().autoincrement()),
-            make_column("name", &Student::name)));
+            make_column("name", &Student::name),
+            make_column("sex",&Student::sex)));
     Db.sync_schema();
     return Db;
 }

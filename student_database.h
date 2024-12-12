@@ -5,6 +5,7 @@
 struct Student {
     int id;
     std::string name;
+    std::string sex;
 };
 
 auto OpenDB(std::string className);
