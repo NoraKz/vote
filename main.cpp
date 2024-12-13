@@ -25,6 +25,10 @@ int main() {
     w.bind("getClass",[&](const std::string &req) -> std::string {
       return database::getClassJSON();
     });
+    w.bind("removeClass",[&](const std::string &req) -> std::string {
+      database::deleteClass(GetCallString(req,0));
+      return "[]";
+    });
     w.set_html(ui::IndexHTML);
     w.run();
   } catch (const webview::exception &e) {

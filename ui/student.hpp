@@ -19,12 +19,13 @@ namespace ui {
             <div class="layui-form">
                 <select lay-filter="class-select-filter">
                   <option value="">请选择</option>
-                  <option value="">请选择</option>
+                  <option v-for="i in classList" :value="i" :key="i">{{ i }}</option>
                 </select>
             </div>
             <br>
             <button class="layui-btn" @click="loadData">加载</button>
             <button class="layui-btn layui-btn-normal" @click="addClass">新建班级</button>
+            <button class="layui-btn layui-btn-danger" @click="deleteClass">删除班级</button>
         </div>
     </div>
 
@@ -44,10 +45,12 @@ namespace ui {
             },
             addClass()
             {
-                layer.prompt({title: '请输入要添加的班级名（例如软国2407）：'}, function(value, index, elem){
+                var that = this;
+                layer.prompt({title: '请输入要添加的班级名（例如软国2407）：'}, async function(value, index, elem){
                     if(value === '') return elem.focus();
-                    window.addClass(value);
+                    await window.addClass(value);
                     layer.msg("添加成功！");
+                    that.loadClass();
                     layer.close(index);
                 });
             },
@@ -56,6 +59,20 @@ namespace ui {
                 var i = await window.getClass();
                 this.classList = i.data;
                 console.info(this.classList);
+                this.$nextTick(() => {
+                    layui.form.render('select');
+                });
+            },
+            async deleteClass()
+            {
+                if(selectClass == "")
+                {
+                    layer.msg("请至少选择一个班级");
+                    return;
+                }
+                await window.removeClass(selectClass);
+                this.loadClass();
+                selectClass = "";
             }
         },
         mounted() {
