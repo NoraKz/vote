@@ -12,7 +12,7 @@ namespace ui {
   <script src="https://unpkg.com/layui@2.9.20/dist/layui.js"></script>
   <div style="margin: 15px;">
     <button class="layui-btn">抽签!</button>
-    <button class="layui-btn">管理学生名单</button>
+    <button class="layui-btn" onclick="window.changeToStudent()">管理学生名单</button>
     <br>
     <br>
     <button class="layui-btn layui-btn-primary layui-border-blue">关于</button>
