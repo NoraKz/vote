@@ -1,5 +1,6 @@
 #include "student_database.h"
 #include <vector>
+#include "sqlite_orm/sqlite_orm.h"
 
 auto OpenDB(std::string className)
 {
