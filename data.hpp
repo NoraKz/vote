@@ -33,7 +33,7 @@ namespace database {
     void deleteClass(std::string className)
     {
         using namespace sqlite_orm;
-        OpenDB().remove<ClassList>(where(c("class") == className));
+        OpenDB().remove_all<ClassList>(where(c(&ClassList::className) == className));
     }
 
     std::string getClassJSON()
