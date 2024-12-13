@@ -13,5 +13,5 @@ struct Student {
 
 auto OpenDB(std::string className);
 
-auto GetAllStudents(std::string className);
+std::vector<Student> GetAllStudents(std::string className);
 #endif

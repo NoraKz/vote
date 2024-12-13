@@ -1,4 +1,5 @@
 #include "student_database.h"
+#include <vector>
 
 auto OpenDB(std::string className)
 {
@@ -13,7 +14,7 @@ auto OpenDB(std::string className)
     return Db;
 }
 
-auto GetAllStudents(std::string className)
+std::vector<Student> GetAllStudents(std::string className)
 {
     auto DB = OpenDB(className);
     return DB.get_all<Student>();
