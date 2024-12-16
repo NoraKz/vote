@@ -47,7 +47,7 @@ std::vector<Student> GetRandomStudents(std::string className, size_t count) {
     auto db = OpenDB(className);
     std::vector<Student> students = db.get_all<Student>();
     if (students.size() < count) {
-        throw std::runtime_error("Not enough students in the class.");
+        return students;
     }
     std::srand(static_cast<unsigned int>(std::time(nullptr)));
     std::random_shuffle(students.begin(), students.end());
