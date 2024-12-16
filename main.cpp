@@ -6,7 +6,8 @@
 #include "data.hpp"
 
 #include <iostream>
-int main() {
+int WINAPI WinMain(HINSTANCE /*hInst*/, HINSTANCE /*hPrevInst*/,
+    LPSTR /*lpCmdLine*/, int /*nCmdShow*/) {
   try {
     webview::webview w(false, nullptr);
     w.set_title("vote - 上课抽签工具");
