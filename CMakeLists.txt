@@ -15,6 +15,6 @@ if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 add_compile_options(/utf-8)
 endif()
 
-add_executable(vote)
+add_executable(vote WIN32)
 target_sources(vote PRIVATE tool/yyjson.c tool/json.cpp student_database.cpp main.cpp)
 target_link_libraries(vote PRIVATE webview::core sqlite_orm::sqlite_orm)

@@ -13,4 +13,6 @@ std::string MakeIntAnswer(int cnt);
 std::string MakeStudentList(std::vector<Student> students);
 
 std::string GetCallString(std::string src , int index);
+
+int GetCallInt(std::string src , int index);
 #endif

@@ -50,3 +50,11 @@ std::string GetCallString(std::string src , int index)
     auto val = yyjson_arr_get(root , index);
     return yyjson_get_str(val);
 }
+
+int GetCallInt(std::string src , int index)
+{
+    yyjson_doc *doc = yyjson_read(src.c_str(), src.length() , 0);
+    yyjson_val *root = yyjson_doc_get_root(doc);
+    auto val = yyjson_arr_get(root , index);
+    return yyjson_get_int(val);
+}
