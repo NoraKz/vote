@@ -40,7 +40,7 @@ void DeleteStudent(std::string className, std::string name)
     using namespace sqlite_orm;
 
     auto DB = OpenDB(className);
-    DB.remove<Student>(where(c(&Student::name) == name));
+    DB.remove_all<Student>(where(c(&Student::name) == name));
 }
 
 std::vector<Student> GetRandomStudents(std::string className, size_t count) {
