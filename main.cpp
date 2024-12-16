@@ -1,15 +1,32 @@
 #include "webview/webview.h"
 #include "ui/index.hpp"
 #include "ui/student.hpp"
+#include "tool/json.h"
+#include "data.hpp"
 
 #include <iostream>
 int main() {
   try {
     webview::webview w(true, nullptr);
     w.set_title("vote - 上课抽签工具");
-    w.set_size(480, 320, WEBVIEW_HINT_NONE);
+    w.set_size(680, 420, WEBVIEW_HINT_NONE);
+    w.bind("changeToIndex",[&](const std::string &req) -> std::string {
+      w.set_html(ui::IndexHTML);
+      return "[]";
+    });
     w.bind("changeToStudent",[&](const std::string &req) -> std::string {
       w.set_html(ui::StudentHTML);
+      return "[]";
+    });
+    w.bind("addClass",[&](const std::string &req) -> std::string {
+      database::addClass(GetCallString(req,0));
+      return "[]";
+    });
+    w.bind("getClass",[&](const std::string &req) -> std::string {
+      return database::getClassJSON();
+    });
+    w.bind("removeClass",[&](const std::string &req) -> std::string {
+      database::deleteClass(GetCallString(req,0));
       return "[]";
     });
     w.set_html(ui::IndexHTML);

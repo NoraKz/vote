@@ -1,6 +1,10 @@
 #include "student_database.h"
 #include <vector>
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <algorithm>
+#include "sqlite_orm/sqlite_orm.h"
 
 auto OpenDB(std::string className)
 {
@@ -38,3 +42,19 @@ void DeleteStudent(std::string className, std::string name)
     auto DB = OpenDB(className);
     DB.remove<Student>(where(c(&Student::name) == name));
 }
+
+std::vector<Student> GetRandomStudents(std::string className, size_t count) {
+    auto db = OpenDB(className);
+    std::vector<Student> students = db.get_all<Student>();
+    if (students.size() < count) {
+        throw std::runtime_error("Not enough students in the class.");
+    }
+    std::srand(static_cast<unsigned int>(std::time(nullptr)));
+    std::random_shuffle(students.begin(), students.end());
+    std::vector<Student> randomStudents;
+    for (size_t i = 0; i < count; ++i) {
+        randomStudents.push_back(students[i]);
+    }
+    return randomStudents;
+}
+
